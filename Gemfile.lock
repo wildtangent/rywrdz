@@ -59,17 +59,15 @@ GEM
     daemons (1.2.2)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     equalizer (0.0.11)
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
-    factory_girl (4.5.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.5.0)
-      factory_girl (~> 4.5.0)
-      railties (>= 3.0.0)
     ffi (1.9.8)
     formatador (0.2.5)
+    gherkin (2.12.2)
+      multi_json (~> 1.3)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     guard (2.12.6)
@@ -205,6 +203,13 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     slop (3.6.0)
     spring (1.3.6)
     sprockets (3.2.0)
@@ -222,6 +227,9 @@ GEM
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
+    turnip (1.3.0)
+      gherkin (>= 2.5)
+      rspec (>= 2.14.0, < 4.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -246,7 +254,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  factory_girl_rails
   guard
   guard-rails
   guard-rspec
@@ -257,7 +264,10 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simplecov
+  simplecov-rcov
   spring
   thin
+  turnip
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
