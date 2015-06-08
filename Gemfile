@@ -17,13 +17,14 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
 
 group :test do
-  gem 'turnip'
   gem 'simplecov'
   gem 'simplecov-rcov'
 end
