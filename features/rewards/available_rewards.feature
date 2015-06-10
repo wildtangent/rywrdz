@@ -6,7 +6,9 @@ Feature: Display customer's available rewards
   Scenario Outline: Customer is eligible for rewards
     As a customer
     Given I am on tariff <tariff>
+    And I am eligible for rewards
     Then I should receive <reward>
+    And I should not receive any error messages
 
     Examples:
       | tariff   | reward      |
@@ -19,7 +21,9 @@ Feature: Display customer's available rewards
   Scenario Outline: Customer is not eligible for rewards
     As a customer
     Given I am on tariff <tariff>
+    And I am not eligible for rewards
     Then I should not receive any rewards
+    And I should not receive any error messages
 
     Examples:
       | tariff      |
@@ -33,6 +37,7 @@ Feature: Display customer's available rewards
     Given I am on tariff 3G1000MB
     And there is an API error from the Eligibility Service
     Then I should not receive any rewards
+    And I should not receive any error messages
 
   Scenario: Invalid account number supplied
     As a customer
