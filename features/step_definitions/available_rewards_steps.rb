@@ -1,23 +1,40 @@
+require 'cucumber/rspec/doubles'
+
 Given(/^I am on tariff (\S+)$/) do |tariff|
-  pending # express the regexp above with the code you wish you had
+  account_number = '234567'
+  @rewards_service = RewardsService.new(account_number, tariff)
 end
 
-Then(/^I should receive (\S+)$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should receive (\S+)$/) do |reward|
+  expect_any_instance_of(EligibilityService)
+    .to receive(:status).and_return 'CUSTOMER_ELIGIBLE'
+  expect_any_instance_of(EligibilityService)
+    .to receive(:valid?).and_return true
+
+  expect(@rewards_service.rewards).to include reward
 end
 
 Then(/^I should not receive any rewards$/) do
-  pending # express the regexp above with the code you wish you had
+  expect_any_instance_of(EligibilityService)
+    .to receive(:status).and_return 'CUSTOMER_INELIGIBLE'
+  expect_any_instance_of(EligibilityService)
+    .to receive(:valid?).and_return true
+  expect(@rewards_service.rewards).to be_empty
 end
 
 Given(/^there is an API error from the Eligibility Service$/) do
-  pending # express the regexp above with the code you wish you had
+  double(
+    EligibilityService,
+    status: EligibilityService::EligibilityServiceError
+  )
 end
 
 Given(/^I have supplied an invalid account number$/) do
-  pending # express the regexp above with the code you wish you had
+  expect_any_instance_of(EligibilityService)
+    .to receive(:valid?).and_return false
 end
 
 Then(/^I should be informed that my account number was invalid$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@rewards_service.rewards).to be_empty
+  expect(@rewards_service.errors).to include 'Account details are not valid'
 end

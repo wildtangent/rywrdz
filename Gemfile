@@ -12,6 +12,7 @@ group :development  do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'guard-rubocop'
 end
 

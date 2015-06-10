@@ -36,6 +36,7 @@ Feature: Display customer's available rewards
 
   Scenario: Invalid account number supplied
     As a customer
-    Given I have supplied an invalid account number
+    Given I am on tariff 3G1000MB
+    And I have supplied an invalid account number
     Then I should not receive any rewards
     And I should be informed that my account number was invalid
