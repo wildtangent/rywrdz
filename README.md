@@ -11,7 +11,9 @@ You can start the app with the standard Rails server scripts
   bundle install
   bundle exec rails server
 ```
-You can request the JSON output at http://localhost:3000/rewards?account_number=[account_number]&tariff=[tariff]
+You can request the JSON output at http://localhost:3000/rewards?account_number=account_number&tariff=tariff
+
+Because there is not Eligibility Service implemented, the default behaviour is to always return no eligiblity. This is stubbed in the tests to provide the various use cases.
 
 ## TEST COVERAGE
 The test suite covers both the models, controller and features and can be run using Guard, or via Rspec, Cucumber respectively
